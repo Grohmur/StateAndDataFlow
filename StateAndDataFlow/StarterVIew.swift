@@ -12,11 +12,21 @@ struct StarterVIew: View {
     
     var body: some View {
         Group {
-            if user.isRegister {
+            if user.isRegister || updateRegistrationStatus() {
                 ContentView()
             } else {
                 RegisterView()
             }
+        }
+    }
+    
+    private func updateRegistrationStatus() -> Bool {
+        let storageName = StorageManager.shared.fetchName()
+        if storageName == "" {
+            return false
+        } else {
+            user.name = storageName
+            return true
         }
     }
 }

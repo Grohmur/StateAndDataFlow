@@ -58,7 +58,7 @@ struct LogoutButtonView: View {
     var body: some View {
         Button {
             StorageManager.shared.deleteName()
-            user.updateRegistrationStatus()
+            user.isRegister.toggle()
         } label: {
             Text("LogOut")
                 .font(.title)
@@ -73,6 +73,5 @@ struct LogoutButtonView: View {
                 .stroke(Color.black, lineWidth: 4)
         )
         .padding(.vertical)
-
     }
 }
